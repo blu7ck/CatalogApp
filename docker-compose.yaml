@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  app:
+    image: catalogapp
+    container_name: gcloud_project
+    volumes:
+      - ./target:/app
+    working_dir: /app
+    command: ["java", "-jar", "prs-0.0.1-SNAPSHOT.jar"]
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/forHaluq
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 1234
+    depends_on:
+      - db
+
+  db:
+    image: postgres:16
+    container_name: postgres_db
+    environment:
+      POSTGRES_DB: forHaluq
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
