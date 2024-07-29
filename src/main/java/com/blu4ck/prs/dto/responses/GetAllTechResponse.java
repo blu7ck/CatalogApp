@@ -11,4 +11,5 @@ public class GetAllTechResponse {
     private Long id;
     private String name;
     private String languageName;
+
 }

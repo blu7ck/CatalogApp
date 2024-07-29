@@ -11,4 +11,5 @@ public class GetAllDescriptionResponse {
     private Long id;
     private String specs;
     private String techName;
+    private String languageName;
 }
